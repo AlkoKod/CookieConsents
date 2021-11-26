@@ -148,6 +148,31 @@
                                 col2: 'Platební brána stripe.com',
                                 col3: '90 dní',
                                 col4: 'Tento soubor cookie je nastaven pro zákazníky, kteří se rozhodnou, že si společnost Stripe zapamatuje jejich údaje o způsobu platby. Zákazník, který navštíví službu Stripe Checkout (checkout.stripe.com), může zaškrtnout políčko pro uložení svých platebních údajů pro budoucí transakce Stripe Checkout. Soubor cookie se nastaví až poté, co zákazník projde ověřovacím krokem během následné transakce Stripe Checkout. Tento soubor cookie je nezbytný k zapnutí funkce Stripe Checkout, pokud zákazník zvolil možnost zapamatování.Jediným účelem souboru cookie je uvést, že zákazník byl ověřen pro konkrétní kombinaci prohlížeče a zařízení. Zatížení souboru cookie je náhodně vygenerovaný řetězec.'
+                            }, {
+                                col1: 'woocommerce_cart_hash',
+                                col2: 'E-shop platforma WooCommerce',
+                                col3: 'do zavření prohlížece',
+                                col4: 'Pomáhá obchodu WooCommerce určit, kdy se obsah košíku/údaje změní.'
+                            }, {
+                                col1: 'woocommerce_items_in_cart',
+                                col2: 'E-shop platforma WooCommerce',
+                                col3: 'do zavření prohlížece',
+                                col4: 'Pomáhá obchodu WooCommerce určit, kdy se obsah košíku/údaje změní.'
+                            }, {
+                                col1: 'wp_woocommerce_session_',
+                                col2: 'E-shop platforma WooCommerce',
+                                col3: '2 dny',
+                                col4: 'Obsahuje jedinečný kód pro každého zákazníka, aby věděl, kde má v databázi najít údaje o košíku každého zákazníka.'
+                            }, {
+                                col1: 'woocommerce_recently_viewed',
+                                col2: 'E-shop platforma WooCommerce',
+                                col3: 'do zavření prohlížece',
+                                col4: 'Pohání widget Nedávno zobrazené produkty.'
+                            }, {
+                                col1: 'store_notice[notice id]',
+                                col2: 'E-shop platforma WooCommerce',
+                                col3: 'do zavření prohlížece',
+                                col4: 'Umožňuje zákazníkům zrušit oznámení o obchodu.'
                             }]
                         }, {
                             title: 'Výkonnostní a analytické soubory cookie',

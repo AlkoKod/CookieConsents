@@ -1,0 +1,285 @@
+<!-- body content ... -->
+<script defer src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.6.2/dist/cookieconsent.js"></script>
+<!-- Inline script -->
+<script>
+    window.addEventListener('load', function() {
+        var cc = initCookieConsent();
+        cc.run({
+            current_lang: 'cs',
+            autoclear_cookies: true, 
+            theme_css: 'https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.6.1/dist/cookieconsent.css', 
+            page_scripts: true, 
+            delay: 0, 
+            autorun: true, 
+            revision: 0, 
+
+            gui_options: {
+                consent_modal: {
+                    layout: 'box', // box,cloud,bar
+                    position: 'top center', // bottom,middle,top + left,right,center
+                    transition: 'zoom' // zoom,slide
+                },
+                settings_modal: {
+                    layout: 'box', // box,bar
+                    // position: 'left',                // right,left (available only if bar layout selected)
+                    transition: 'slide' // zoom,slide
+                }
+            },
+            onAccept: function(cookie) {
+                // ...
+                if (cc.allowedCategory('necessary')) {
+                    var dataLayer = window.dataLayer || [];
+                    dataLayer.push({
+                        event: "CookieConsent",
+                        consentType: "necessary"
+                    });
+                }
+
+
+                if (cc.allowedCategory('tracking')) {
+                    var dataLayer = window.dataLayer || [];
+                    dataLayer.push({
+                        event: "CookieConsent",
+                        consentType: "tracking"
+                    });
+                }
+
+                if (cc.allowedCategory('performance')) {
+                    var dataLayer = window.dataLayer || [];
+                    dataLayer.push({
+                        event: "CookieConsent",
+                        consentType: "performance"
+                    });
+                }
+
+
+            },
+
+            onChange: function(cookie, changed_preferences) {
+                if (cc.allowedCategory('necessary')) {
+                    var dataLayer = window.dataLayer || [];
+                    dataLayer.push({
+                        event: "CookieConsent",
+                        consentType: "necessary"
+                    });
+                }
+
+
+                if (cc.allowedCategory('tracking')) {
+                    var dataLayer = window.dataLayer || [];
+                    dataLayer.push({
+                        event: "CookieConsent",
+                        consentType: "tracking"
+                    });
+                }
+
+                if (cc.allowedCategory('performance')) {
+                    var dataLayer = window.dataLayer || [];
+                    dataLayer.push({
+                        event: "CookieConsent",
+                        consentType: "performance"
+                    });
+                }
+            },
+
+            languages: {
+                'cs': {
+                    consent_modal: {
+                        title: 'Můžeme si s tebou dát cookies, ať víme jak to tu žije?',
+                        description: 'Náš rodinný e-shop používá jako většina jiných stránek základní soubory cookie k zajištění svého správného fungování, analytické cookie k informacích o návštěvnosti a   marketingové soubory cookie k pochopení toho, jak s  webem pracujete. Pomozte nám zlepšit náš e-shop, dejte si s námi sušenky cookies. <button type="button" data-cc="c-settings" class="cc-link">Chci si vybrat</button>',
+
+                        primary_btn: {
+                            text: 'Jasně, ok 🍪.',
+                            role: 'accept_all' // 'accept_selected' or 'accept_all'
+                        },
+                        secondary_btn: {
+                            text: 'Ne, jsem tu tajně 🕶️.',
+                            role: 'accept_necessary' // 'settings' or 'accept_necessary'
+                        }
+                    },
+                    settings_modal: {
+                        title: 'Předvolby souborů cookie',
+                        save_settings_btn: 'Uložit nastavení',
+                        accept_all_btn: 'Přijmout všechny',
+                        reject_all_btn: 'Odmítnout všechny',
+                        close_btn_label: 'Zavřít',
+                        cookie_table_headers: [{
+                            col1: 'Název'
+                        }, {
+                            col2: 'Doména'
+                        }, {
+                            col3: 'Expirace'
+                        }, {
+                            col4: 'Popis'
+                        }],
+                        blocks: [{
+                            title: 'Používání souborů cookie 📢',
+                            description: 'Soubory cookie používám k zajištění základních funkcí webových stránek a ke zlepšení vašeho online zážitku. U každé kategorie si můžete zvolit, zda se chcete přihlásit nebo odhlásit, kdykoli budete chtít. Další podrobnosti týkající se souborů cookie a dalších citlivých údajů naleznete v úplném znění. <a href="https://www.bestonline.cz/ochrana-soukromi/" class="cc-link">zásady ochrany osobních údajů</a> a <a href="https://www.bestonline.cz/cookie-policy/" class="cc-link">Cookie policy</a>'
+                        }, {
+                            title: 'Nezbytně nutné soubory cookie',
+                            description: 'Tyto soubory cookie jsou nezbytné pro správné fungování mých webových stránek. Bez těchto souborů cookie by webové stránky nefungovaly správně.',
+                            toggle: {
+                                value: 'necessary',
+                                enabled: true,
+                                readonly: true // cookie categories with readonly=true are all treated as "necessary cookies"
+                            },
+                            cookie_table: [{
+                                col1: 'cc_cookie',
+                                col2: 'Cookie popup',
+                                col3: '180 dní',
+                                col4: 'Váš souhlas s cookies z této lišty.'
+                            }, {
+                                col1: '__stripe_sid',
+                                col2: 'Platební brána stripe.com',
+                                col3: '30 minut',
+                                col4: 'Tento soubor cookie je nastaven pro účely prevence podvodů. Detekce podvodů využívá technologii, která nám pomáhá vyhodnotit riziko spojené s pokusem o transakci, který je povolen na webových stránkách uživatele Stripe nebo v aplikaci, která shromažďuje informace.'
+                            }, {
+                                col1: '__stripe_mid',
+                                col2: 'Platební brána stripe.com',
+                                col3: '1 rok',
+                                col4: 'Tento soubor cookie je nastaven pro účely prevence podvodů. Detekce podvodů využívá technologii, která nám pomáhá vyhodnotit riziko spojené s pokusem o transakci, který je povolen na webových stránkách uživatele Stripe nebo v aplikaci, která shromažďuje informace.'
+                            }, {
+                                col1: 'm.stripe.com (nazýváno _guid/ m cookie)',
+                                col2: 'Platební brána stripe.com',
+                                col3: '2 roky',
+                                col4: 'Tento soubor cookie je nastaven pro účely prevence podvodů. Detekce podvodů využívá technologii, která nám pomáhá vyhodnotit riziko spojené s pokusem o transakci, který je povolen na webových stránkách uživatele Stripe nebo v aplikaci, která shromažďuje informace.'
+                            }, {
+                                col1: 'pay_sid',
+                                col2: 'Platební brána stripe.com',
+                                col3: '90 dní',
+                                col4: 'Tento soubor cookie je nastaven pro zákazníky, kteří se rozhodnou, že si společnost Stripe zapamatuje jejich údaje o způsobu platby. Zákazník, který navštíví službu Stripe Checkout (checkout.stripe.com), může zaškrtnout políčko pro uložení svých platebních údajů pro budoucí transakce Stripe Checkout. Soubor cookie se nastaví až poté, co zákazník projde ověřovacím krokem během následné transakce Stripe Checkout. Tento soubor cookie je nezbytný k zapnutí funkce Stripe Checkout, pokud zákazník zvolil možnost zapamatování.Jediným účelem souboru cookie je uvést, že zákazník byl ověřen pro konkrétní kombinaci prohlížeče a zařízení. Zatížení souboru cookie je náhodně vygenerovaný řetězec.'
+                            }]
+                        }, {
+                            title: 'Výkonnostní a analytické soubory cookie',
+                            description: 'Tyto soubory cookie umožňují webové stránce zapamatovat si volby, které jste provedli v minulosti.',
+                            toggle: {
+                                value: 'performance', // your cookie category
+                                enabled: false,
+                                readonly: false
+                            },
+                            cookie_table: [ // list of all expected cookies
+                                {
+                                    col1: '^_ga', // match all cookies starting with "_ga"
+                                    col2: 'google.com',
+                                    col3: '2 years',
+                                    col4: 'Soubor cookie _ga, instalovaný službou Google Analytics, vypočítává údaje o návštěvnících, relacích a kampaních a také sleduje používání webu pro analytickou zprávu webu. Soubor cookie ukládá informace anonymně a k rozpoznání jedinečných návštěvníků přiřazuje náhodně vygenerované číslo.',
+                                    is_regex: true
+                                }, {
+                                    col1: '_gid',
+                                    col2: 'google.com',
+                                    col3: '1 day',
+                                    col4: 'Soubor cookie _gid, instalovaný službou Google Analytics, ukládá informace o tom, jak návštěvníci používají webové stránky, a zároveň vytváří analytickou zprávu o výkonu webových stránek. Mezi shromažďované údaje patří počet návštěvníků, jejich zdroj a anonymně navštívené stránky.',
+                                }, {
+                                    col1: '_gat_UA-46031323-2',
+                                    col2: 'google.com',
+                                    col3: '1 day',
+                                    col4: 'Varianta souboru cookie _gat, kterou nastavuje služba Google Analytics a Google Tag Manager a která umožňuje majitelům webových stránek sledovat chování návštěvníků a měřit výkonnost stránek. Vzor prvku v názvu obsahuje jedinečné identifikační číslo účtu nebo webové stránky, ke které se vztahuje.',
+                                }
+                            ]
+                        }, {
+                            title: 'Soubory cookie pro reklamu a cílení',
+                            description: 'Tyto soubory cookie shromažďují informace o tom, jak webové stránky používáte, které stránky jste navštívili a na které odkazy jste klikli. Všechny údaje jsou anonymizované a nelze je použít k vaší identifikaci.',
+                            toggle: {
+                                value: 'tracking',
+                                enabled: false,
+                                readonly: false
+                            },
+                            cookie_table: [ // list of all expected cookies
+                                {
+                                    col1: 'ssupp.vid', // match all cookies starting with "_ga"
+                                    col2: 'smartsupp.com',
+                                    col3: '6 měsíců',
+                                    col4: 'ID návštěvníka (expiruje po 6 měsících).',
+                                    is_regex: true
+                                }, {
+                                    col1: 'ssupp.chatid', // match all cookies starting with "_ga"
+                                    col2: 'smartsupp.com',
+                                    col3: 'do zavření prohlížece',
+                                    col4: 'ID konverzace',
+                                    is_regex: true
+                                }, {
+                                    col1: 'ssupp.group', // match all cookies starting with "_ga"
+                                    col2: 'smartsupp.com',
+                                    col3: 'do zavření prohlížece',
+                                    col4: 'poslední skupina návštěvníka',
+                                    is_regex: true
+                                }, {
+                                    col1: 'ssupp.opened', // match all cookies starting with "_ga"
+                                    col2: 'smartsupp.com',
+                                    col3: 'do zavření prohlížece',
+                                    col4: 'indikátor otevření chat okna',
+                                    is_regex: true
+                                }, {
+                                    col1: 'ssupp.barclicked', // match all cookies starting with "_ga"
+                                    col2: 'smartsupp.com',
+                                    col3: 'do zavření prohlížece',
+                                    col4: 'indikátor kliknutí na chat okno; potřebné pro automatické zprávy',
+                                    is_regex: true
+                                }, {
+                                    col1: 'ssupp.message', // match all cookies starting with "_ga"
+                                    col2: 'smartsupp.com',
+                                    col3: 'do zavření prohlížece',
+                                    col4: 'obsah rozepsané zprávy při obnovení stránky',
+                                    is_regex: true
+                                }, {
+                                    col1: 'ssupp.unreaded', // match all cookies starting with "_ga"
+                                    col2: 'smartsupp.com',
+                                    col3: 'do zavření prohlížece',
+                                    col4: 'počet nepřečtených zpráv',
+                                    is_regex: true
+                                }, {
+                                    col1: 'ssupp.visits', // match all cookies starting with "_ga"
+                                    col2: 'smartsupp.com',
+                                    col3: '6 měsíců',
+                                    col4: 'počet návštěv, potřebné pro automatické zprávy',
+                                    is_regex: true
+                                }, {
+                                    col1: 'SL_C_23361dd035530_KEY', // match all cookies starting with "_ga"
+                                    col2: 'smartsupp.com',
+                                    col3: '2 roky',
+                                    col4: 'projektový klíč',
+                                    is_regex: true
+                                }, {
+                                    col1: 'SL_C_23361dd035530_SID', // match all cookies starting with "_ga"
+                                    col2: 'smartsupp.com',
+                                    col3: '2 roky',
+                                    col4: 'ID aktuální relace',
+                                    is_regex: true
+                                }, {
+                                    col1: 'SL_C_23361dd035530_VID', // match all cookies starting with "_ga"
+                                    col2: 'smartsupp.com',
+                                    col3: '2 roky',
+                                    col4: 'ID návštěvníka',
+                                    is_regex: true
+                                }, {
+                                    col1: 'leady_session_id', // match all cookies starting with "_ga"
+                                    col2: 'leady.cz',
+                                    col3: 'do zavření prohlížece',
+                                    col4: 'Náhodné číslo pro sledování uživatele uvnitř navštívené webové stránky.',
+                                    is_regex: true
+                                }, {
+                                    col1: 'c', // match all cookies starting with "_ga"
+                                    col2: 'leady.cz',
+                                    col3: 'nikdy',
+                                    col4: 'Soubor cookie třetí strany, náhodné číslo sledující uživatele na různých webových stránkách.',
+                                    is_regex: true
+                                }, 
+                            ]
+                        }, {
+                            title: 'Více informací',
+                            description: 'V případě jakýchkoli dotazů týkajících se našich zásad o souborech cookie a vaší volby <a class="cc-link" href="https://www.bestonline.cz/kontakt/">nás kontaktujte</a>.',
+                        }]
+                    }
+                }
+            }
+        });
+
+        if (!cc.validCookie('cc_cookie')) {
+                var dataLayer = window.dataLayer || [];
+                dataLayer.push({
+                    event: "CookieConsent",
+                    consentType: "empty"
+                });
+        }
+    });
+</script>

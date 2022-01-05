@@ -20,6 +20,21 @@
     
             // run plugin with your configuration
             cc.run({
+                
+                gui_options: {
+                    consent_modal: {
+                        layout: 'cloud',               // box/cloud/bar
+                        position: 'bottom center',     // bottom/middle/top + left/right/center
+                        transition: 'slide',           // zoom/slide
+                        swap_buttons: false            // enable to invert buttons
+                },
+                    settings_modal: {
+                        layout: 'box',                 // box/bar
+                        // position: 'left',           // left/right
+                        transition: 'slide'            // zoom/slide
+                }
+                },
+                
                 current_lang: 'cs',
                 autoclear_cookies: true,                   // default: false
                 theme_css: 'https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.7.2/dist/cookieconsent.css',  // 🚨 replace with a valid path
@@ -209,7 +224,7 @@
                     'cs': {
                         consent_modal: {
                             title: 'Po našich sušenkách se vám zuby nezkazí!',
-                            description: 'Dobrý den, tyto webové stránky používají základní soubory cookie k zajištění svého správného fungování a sledovací soubory cookie k pochopení toho, jak s nimi pracujete. Ty se nastavují pouze po souhlasu. <button type="button" data-cc="c-settings" class="cc-link">Vyberte si na co máte chuť</button>',
+                            description: 'Dobrý den, na našem webu používáme cookies, abychom zjistili kolik lidí nám sem chodí a jaké služby je zajímají. Tyto soubory můžeme používat pouze s vaším souhlasem. <button type="button" data-cc="c-settings" class="cc-link">Vyberte si na co máte chuť</button>',
                             primary_btn: {
                                 text: 'Sníst všechny',
                                 role: 'accept_all'              // 'accept_selected' or 'accept_all'

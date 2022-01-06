@@ -1,3 +1,5 @@
+add_action( 'wp_head', function () { ?>
+
 <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -9,11 +11,10 @@
       'personalization_storage': 'denied',
       'security_storage': 'denied',
     });
-    </script>
-    
-    <script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.7.2/dist/cookieconsent.js"></script>
-    <script>
-        window.addEventListener('load', function () {
+</script>
+<script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.7.2/dist/cookieconsent.js"></script>
+<script>
+    window.addEventListener('load', function () {
     
             // obtain plugin
             var cc = initCookieConsent();
@@ -35,7 +36,7 @@
                 }
                 },
                 
-                current_lang: 'cs-CZ',
+                current_lang: 'cs',
                 autoclear_cookies: true,                   // default: false
                 theme_css: 'https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.7.2/dist/cookieconsent.css',  // 🚨 replace with a valid path
                 page_scripts: false,                        // default: false
@@ -85,7 +86,7 @@
     
     
                 languages: {
-                    'en-US': {
+                    'en': {
                         consent_modal: {
                             title: 'We use cookies!',
                             description: 'Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only after consent. <button type="button" data-cc="c-settings" class="cc-link">Let me choose</button>',
@@ -113,7 +114,7 @@
                             blocks: [
                                 {
                                     title: 'Cookie usage 📢',
-                                    description: 'I use cookies to ensure the basic functionalities of the website and to enhance your online experience. You can choose for each category to opt-in/out whenever you want. For more details relative to cookies and other sensitive data, please read the full <a href="https://www.willowdent.cz/en/cookie-policy/" class="cc-link">cookie policy</a>.'
+                                    description: 'I use cookies to ensure the basic functionalities of the website and to enhance your online experience. You can choose for each category to opt-in/out whenever you want. For more details relative to cookies and other sensitive data, please read the full <a href="https://rozett.cz/en/cookie-policy/" class="cc-link">cookie policy</a>.'
                                 }, {
                                     title: 'Strictly necessary cookies',
                                     description: 'These cookies are essential for the proper functioning of my website. Without these cookies, the website would not work properly',
@@ -156,6 +157,11 @@
                                             col2: 'WPML',
                                             col3: '1 day',
                                             col4: 'Store language settings',
+                                        }, {
+                                            col1: 'cc-cookie',
+                                            col2: 'Cookie Consent',
+                                            col3: '182 days',
+                                            col4: 'Store your cookie preferences',
                                         }
                                     ]
                                 }, {
@@ -188,24 +194,24 @@
                             ]
                         }
                     },
-                    'cs-CZ': {
+                    'cs': {
                         consent_modal: {
-                            title: 'Po našich sušenkách se vám zuby nezkazí!',
-                            description: 'Dobrý den, na našem webu používáme cookies, abychom zjistili kolik lidí nám sem chodí a jaké služby je zajímají. Tyto soubory můžeme používat pouze s vaším souhlasem. <button type="button" data-cc="c-settings" class="cc-link">Vyberte si na co máte chuť</button>',
+                            title: 'Používáme cookies',
+                            description: 'Dobrý den, na našem webu používáme cookies, abychom zjistili kolik lidí nám sem chodí a jaké služby je zajímají. Tyto soubory můžeme používat pouze s vaším souhlasem. <button type="button" data-cc="c-settings" class="cc-link">Vyberte si jaké cookies chcete používat</button>',
                             primary_btn: {
-                                text: 'Sníst všechny',
+                                text: 'Přijmout všechny',
                                 role: 'accept_all'              // 'accept_selected' or 'accept_all'
                             },
                             secondary_btn: {
-                                text: 'Držet hladovku',
+                                text: 'Odmítnout všechny',
                                 role: 'accept_necessary'        // 'settings' or 'accept_necessary'
                             }
                         },
                         settings_modal: {
-                            title: 'Vyberte si na co máte chuť',
+                            title: 'Vyberte si jaké cookies chcete přijmout',
                             save_settings_btn: 'Uložit nastavení',
-                            accept_all_btn: 'Sníst všechny',
-                            reject_all_btn: 'Držet hladovku',
+                            accept_all_btn: 'Přijmout všechny',
+                            reject_all_btn: 'Odmítnout všechny',
                             close_btn_label: 'Zavřít',
                             cookie_table_headers: [
                                 { col1: 'Name' },
@@ -215,8 +221,8 @@
                             ],
                             blocks: [
                                 {
-                                    title: 'Pečeme tyto sušenky 📢',
-                                    description: 'Soubory cookie používám k zajištění základních funkcí webových stránek a ke zlepšení vašeho online zážitku. U každé kategorie si můžete zvolit, zda se chcete přihlásit nebo odhlásit, kdykoli budete chtít. Další podrobnosti týkající se souborů cookie a dalších citlivých údajů naleznete v úplném znění. <a href="https://www.willowdent.cz/cookie-policy/" class="cc-link">Cookie policy</a>'
+                                    title: 'Používáme cookies 📢',
+                                    description: 'Soubory cookie používám k zajištění základních funkcí webových stránek a ke zlepšení vašeho online zážitku. U každé kategorie si můžete zvolit, zda se chcete přihlásit nebo odhlásit, kdykoli budete chtít. Další podrobnosti týkající se souborů cookie a dalších citlivých údajů naleznete v úplném znění. <a href="https://rozett.cz/cookie-policy/" class="cc-link">Cookie policy</a>'
                                 }, {
                                     title: 'Nezbytně nutné soubory cookie',
                                     description: 'Tyto soubory cookie jsou nezbytné pro správné fungování mých webových stránek. Bez těchto souborů cookie by webové stránky nefungovaly správně.',
@@ -258,6 +264,11 @@
                                             col2: 'WPML',
                                             col3: '1 den',
                                             col4: 'Uložení jazykových nastavení',
+                                        }, {
+                                            col1: 'cc-cookie',
+                                            col2: 'Cookie Consent',
+                                            col3: '182 dní',
+                                            col4: 'Uchovávání vašich cookie preferencí',
                                         }
                                     ]
                                 }, {
@@ -293,10 +304,21 @@
                 }
             });
         });
-    </script>
+</script>
     
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','XXX-XXXXXX');</script>
+
+<?php } );
+
+add_action( 'wp_body_open', function () { ?>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=XXX-XXXXXX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<?php } );

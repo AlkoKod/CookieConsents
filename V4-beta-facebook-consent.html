@@ -1,5 +1,6 @@
-
 add_action( 'wp_head', function () { ?>
+
+<!-- FDo not forget to set acebook pixel code in GTM needs to have fbq('consent', 'revoke); before inti! -->
 
 <script>
     window.dataLayer = window.dataLayer || [];
@@ -54,7 +55,7 @@ add_action( 'wp_body_open', function () { ?>
             current_lang: 'cs',
             autoclear_cookies: true,                   // default: false
             theme_css: 'https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.7.2/dist/cookieconsent.css',  // 🚨 replace with a valid path
-            page_scripts: true,                        // default: false
+            page_scripts: false,                        // default: false
 
             mode: 'opt-in',                          // default: 'opt-in'; value: 'opt-in' or 'opt-out'
             // delay: 0,                               // default: 0
@@ -82,22 +83,12 @@ add_action( 'wp_body_open', function () { ?>
                         gtag('consent', 'update', {
                             'analytics_storage': 'granted'
                         });
-						fbq('consent', 'grant');
                     }
                     if (cc.allowedCategory('advertising')) {
                         gtag('consent', 'update', {
                             'ad_storage': 'granted'
                         });
-                    }
-                    if (cc.allowedCategory('personalization')) {
-                        gtag('consent', 'update', {
-                            'personalization_storage': 'granted',
-                        });
-                    }
-                    if (cc.allowedCategory('security')) {
-                        gtag('consent', 'update', {
-                            'security_storage': 'granted'
-                        });
+			fbq('consent', 'grant');
                     }
                 },
     
@@ -107,43 +98,23 @@ add_action( 'wp_body_open', function () { ?>
                         gtag('consent', 'update', {
                             'analytics_storage': 'granted'
                         });
-						fbq('consent', 'grant');
                     }
                     if (!cc.allowedCategory('analytics')) {
                         gtag('consent', 'update', {
                             'analytics_storage': 'denied'
                         });
-						fbq('consent', 'revoke');
                     }
                     if (cc.allowedCategory('advertising')) {
                         gtag('consent', 'update', {
                             'ad_storage': 'granted'
                         });
+			fbq('consent', 'grant');
                     }
                     if (!cc.allowedCategory('advertising')) {
                         gtag('consent', 'update', {
                             'ad_storage': 'denied'
                         });
-                    }
-                    if (cc.allowedCategory('personalization')) {
-                        gtag('consent', 'update', {
-                            'personalization_storage': 'granted',
-                        });
-                    }
-                    if (!cc.allowedCategory('personalization')) {
-                        gtag('consent', 'update', {
-                            'personalization_storage': 'denied',
-                        });
-                    }
-                    if (cc.allowedCategory('security')) {
-                        gtag('consent', 'update', {
-                            'security_storage': 'granted'
-                        });
-                    }
-                    if (!cc.allowedCategory('security')) {
-                        gtag('consent', 'update', {
-                            'security_storage': 'denied'
-                        });
+			fbq('consent', 'revoke);
                     }
                 },
     
@@ -233,42 +204,10 @@ add_action( 'wp_body_open', function () { ?>
                                 },
                                 cookie_table: [             // list of all expected cookies
                                     {
-                                        col1: 'sid',       // match all cookies starting with "_ga"
-                                        col2: 'seznam.cz',
-                                        col3: '30 dní',
-                                        col4: 'Seznam.cz retargeting',
-                                    }
-                                ]
-                            }, {
-                                title: 'Personalizační cookies',
-                                description: 'Tyto soubory cookie umožňují upravovat web na míru návštěvníkovi.',
-                                toggle: {
-                                    value: 'personalization',     // your cookie category
-                                    enabled: false,
-                                    readonly: false
-                                },
-                                cookie_table: [             // list of all expected cookies
-                                    {
-                                        col1: 'xxx',       // match all cookies starting with "_ga"
-                                        col2: 'xxxxxxx.cz',
-                                        col3: 'x dní',
-                                        col4: 'popis cookie',
-                                    }
-                                ]
-                            }, {
-                                title: 'Bezpečnostní cookies',
-                                description: 'Tyto soubory cookie pomáhají zabezpečit návštěvníka na webu.',
-                                toggle: {
-                                    value: 'security',     // your cookie category
-                                    enabled: false,
-                                    readonly: false
-                                },
-                                cookie_table: [             // list of all expected cookies
-                                    {
-                                        col1: 'xxx',       // match all cookies starting with "_ga"
-                                        col2: 'xxxxxxx.cz',
-                                        col3: 'x dní',
-                                        col4: 'popis cookie',
+                                        col1: 'fbp',       
+                                        col2: 'facebook.com',
+                                        col3: '3 měsíce',
+                                        col4: 'Slouží k ukládání a sledování návštěv na různých webových stránkách.',
                                     }
                                 ]
                             }, {

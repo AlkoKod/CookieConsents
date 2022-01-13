@@ -1,1 +1,291 @@
 
+add_action( 'wp_head', function () { ?>
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+
+    gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied',
+        'functionality_storage': 'granted',
+        'personalization_storage': 'denied',
+        'security_storage': 'denied',
+    });
+</script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TWDR5SG');</script>
+<!-- End Google Tag Manager -->
+
+<?php } );
+
+add_action( 'wp_body_open', function () { ?>
+
+<script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.7.2/dist/cookieconsent.js"></script>
+
+<script>
+    window.addEventListener('load', function () {
+
+        // obtain plugin
+        var cc = initCookieConsent();
+
+        // run plugin with your configuration
+        cc.run({
+
+            gui_options: {
+                consent_modal: {
+                    layout: 'cloud',               // box/cloud/bar
+                    position: 'bottom center',     // bottom/middle/top + left/right/center
+                    transition: 'slide',           // zoom/slide
+                    swap_buttons: false            // enable to invert buttons
+                },
+                settings_modal: {
+                    layout: 'box',                 // box/bar
+                    // position: 'left',           // left/right
+                    transition: 'slide'            // zoom/slide
+                }
+            },
+
+            current_lang: 'cs',
+            autoclear_cookies: true,                   // default: false
+            theme_css: 'https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v2.7.2/dist/cookieconsent.css',  // 🚨 replace with a valid path
+            page_scripts: true,                        // default: false
+
+            mode: 'opt-in',                          // default: 'opt-in'; value: 'opt-in' or 'opt-out'
+            // delay: 0,                               // default: 0
+            auto_language: 'document',                      // default: null; could also be 'browser' or 'document'
+            // autorun: true,                          // default: true
+            // force_consent: false,                   // default: false
+            // hide_from_bots: false,                  // default: false
+            // remove_cookie_tables: false             // default: false
+            // cookie_name: 'cc_cookie',               // default: 'cc_cookie'
+            cookie_expiration: 182,                 // default: 182 (days)
+            // cookie_necessary_only_expiration: 182   // default: disabled
+            // cookie_domain: location.hostname,       // default: current domain
+            // cookie_path: '/',                       // default: root
+            // cookie_same_site: 'Lax',                // default: 'Lax'
+            // use_rfc_cookie: false,                  // default: false
+            // revision: 0,                            // default: 0
+
+
+ onFirstAction: function (user_preferences, cookie) {
+                    // callback triggered only once on the first accept/reject action
+                },
+    
+                onAccept: function (cookie) {
+                    if (cc.allowedCategory('analytics')) {
+                        gtag('consent', 'update', {
+                            'analytics_storage': 'granted'
+                        });
+						fbq('consent', 'grant');
+                    }
+                    if (cc.allowedCategory('advertising')) {
+                        gtag('consent', 'update', {
+                            'ad_storage': 'granted'
+                        });
+                    }
+                    if (cc.allowedCategory('personalization')) {
+                        gtag('consent', 'update', {
+                            'personalization_storage': 'granted',
+                        });
+                    }
+                    if (cc.allowedCategory('security')) {
+                        gtag('consent', 'update', {
+                            'security_storage': 'granted'
+                        });
+                    }
+                },
+    
+                onChange: function (cookie, changed_categories) {
+                    // callback triggered when user changes preferences after consent has already been given
+                   if (cc.allowedCategory('analytics')) {
+                        gtag('consent', 'update', {
+                            'analytics_storage': 'granted'
+                        });
+						fbq('consent', 'grant');
+                    }
+                    if (!cc.allowedCategory('analytics')) {
+                        gtag('consent', 'update', {
+                            'analytics_storage': 'denied'
+                        });
+						fbq('consent', 'revoke');
+                    }
+                    if (cc.allowedCategory('advertising')) {
+                        gtag('consent', 'update', {
+                            'ad_storage': 'granted'
+                        });
+                    }
+                    if (!cc.allowedCategory('advertising')) {
+                        gtag('consent', 'update', {
+                            'ad_storage': 'denied'
+                        });
+                    }
+                    if (cc.allowedCategory('personalization')) {
+                        gtag('consent', 'update', {
+                            'personalization_storage': 'granted',
+                        });
+                    }
+                    if (!cc.allowedCategory('personalization')) {
+                        gtag('consent', 'update', {
+                            'personalization_storage': 'denied',
+                        });
+                    }
+                    if (cc.allowedCategory('security')) {
+                        gtag('consent', 'update', {
+                            'security_storage': 'granted'
+                        });
+                    }
+                    if (!cc.allowedCategory('security')) {
+                        gtag('consent', 'update', {
+                            'security_storage': 'denied'
+                        });
+                    }
+                },
+    
+
+            languages: {
+                'cs': {
+                    consent_modal: {
+                        title: 'Používáme cookies',
+                        description: 'Dobrý den, na našem webu používáme cookies, abychom zjistili kolik lidí nám sem chodí a jaké služby je zajímají. Tyto soubory můžeme používat pouze s vaším souhlasem. <button type="button" data-cc="c-settings" class="cc-link">Vyberte si jaké cookies chcete používat</button>',
+                        primary_btn: {
+                            text: 'Přijmout všechny',
+                            role: 'accept_all'              // 'accept_selected' or 'accept_all'
+                        },
+                        secondary_btn: {
+                            text: 'Odmítnout všechny',
+                            role: 'accept_necessary'        // 'settings' or 'accept_necessary'
+                        }
+                    },
+                    settings_modal: {
+                        title: 'Vyberte si jaké cookies chcete přijmout',
+                        save_settings_btn: 'Uložit nastavení',
+                        accept_all_btn: 'Přijmout všechny',
+                        reject_all_btn: 'Odmítnout všechny',
+                        close_btn_label: 'Zavřít',
+                        cookie_table_headers: [
+                            { col1: 'Name' },
+                            { col2: 'Domain' },
+                            { col3: 'Expiration' },
+                            { col4: 'Description' }
+                        ],
+                        blocks: [
+                            {
+                                title: 'Používáme cookies 📢',
+                                description: 'Soubory cookie používám k zajištění základních funkcí webových stránek a ke zlepšení vašeho online zážitku. U každé kategorie si můžete zvolit, zda se chcete přihlásit nebo odhlásit, kdykoli budete chtít. Další podrobnosti týkající se souborů cookie a dalších citlivých údajů naleznete v úplném znění. <a href="https://www.alessykora.cz/cookie-policy/" class="cc-link">Cookie policy</a>'
+                            }, {
+                                title: 'Nezbytně nutné soubory cookie',
+                                description: 'Tyto soubory cookie jsou nezbytné pro správné fungování mých webových stránek. Bez těchto souborů cookie by webové stránky nefungovaly správně.',
+                                toggle: {
+                                    value: 'functionality',
+                                    enabled: true,
+                                    readonly: true          // cookie categories with readonly=true are all treated as "necessary cookies"
+                                },
+                                cookie_table: [             // list of all expected cookies
+                                    {
+                                        col1: 'cc-cookie',
+                                        col2: 'Cookie Consent',
+                                        col3: '182 dní',
+                                        col4: 'Uchovávání vašich cookie preferencí',
+                                    }
+                                ]
+                            }, {
+                                title: 'Výkonnostní a analytické cookies',
+                                description: 'Tyto soubory cookie umožňují sledovat anonymní návštěvnost webových stránek.',
+                                toggle: {
+                                    value: 'analytics',     // your cookie category
+                                    enabled: false,
+                                    readonly: false
+                                },
+                                cookie_table: [             // list of all expected cookies
+                                    {
+                                        col1: '^_ga',       // match all cookies starting with "_ga"
+                                        col2: 'google.com',
+                                        col3: '2 roky',
+                                        col4: 'Soubor cookie _ga, instalovaný službou Google Analytics, vypočítává údaje o návštěvnících, relacích a kampaních a také sleduje používání webu pro analytickou zprávu webu. Soubor cookie ukládá informace anonymně a k rozpoznání jedinečných návštěvníků přiřazuje náhodně vygenerované číslo.',
+                                        is_regex: true
+                                    },
+                                    {
+                                        col1: '_gid',
+                                        col2: 'google.com',
+                                        col3: '1 den',
+                                        col4: 'Soubor cookie _gid, instalovaný službou Google Analytics, ukládá informace o tom, jak návštěvníci používají webové stránky, a zároveň vytváří analytickou zprávu o výkonu webových stránek. Mezi shromažďované údaje patří počet návštěvníků, jejich zdroj a anonymně navštívené stránky.',
+                                    },
+                                    {
+                                        col1: 'gat',
+                                        col2: 'google.com',
+                                        col3: '1 minuta',
+                                        col4: 'Tento soubor cookie neukládá žádné informace o uživateli, slouží pouze k omezení počtu požadavků, které musí být odeslány na web doubleclick.net.',
+                                    }
+                                ]
+                            }, {
+                                title: 'Reklamní cookies',
+                                description: 'Tyto soubory cookie umožňují sledovat návštěvnost webových stránek a identifikovat stejnou návštěvu.',
+                                toggle: {
+                                    value: 'advertising',     // your cookie category
+                                    enabled: false,
+                                    readonly: false
+                                },
+                                cookie_table: [             // list of all expected cookies
+                                    {
+                                        col1: 'sid',       // match all cookies starting with "_ga"
+                                        col2: 'seznam.cz',
+                                        col3: '30 dní',
+                                        col4: 'Seznam.cz retargeting',
+                                    }
+                                ]
+                            }, {
+                                title: 'Personalizační cookies',
+                                description: 'Tyto soubory cookie umožňují upravovat web na míru návštěvníkovi.',
+                                toggle: {
+                                    value: 'personalization',     // your cookie category
+                                    enabled: false,
+                                    readonly: false
+                                },
+                                cookie_table: [             // list of all expected cookies
+                                    {
+                                        col1: 'xxx',       // match all cookies starting with "_ga"
+                                        col2: 'xxxxxxx.cz',
+                                        col3: 'x dní',
+                                        col4: 'popis cookie',
+                                    }
+                                ]
+                            }, {
+                                title: 'Bezpečnostní cookies',
+                                description: 'Tyto soubory cookie pomáhají zabezpečit návštěvníka na webu.',
+                                toggle: {
+                                    value: 'security',     // your cookie category
+                                    enabled: false,
+                                    readonly: false
+                                },
+                                cookie_table: [             // list of all expected cookies
+                                    {
+                                        col1: 'xxx',       // match all cookies starting with "_ga"
+                                        col2: 'xxxxxxx.cz',
+                                        col3: 'x dní',
+                                        col4: 'popis cookie',
+                                    }
+                                ]
+                            }, {
+                                title: 'Máte nějaké dotazy?',
+                                description: 'V případě jakýchkoli dotazů týkajících se našich zásad o souborech cookie a vaší volby se obraťte na info@alessykora.cz.',
+                            }
+                        ]
+                    }
+                }
+            }
+        });
+    });
+</script>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWDR5SG" height="0" width="0"
+        style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<?php } );

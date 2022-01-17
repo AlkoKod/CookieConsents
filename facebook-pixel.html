@@ -1,0 +1,21 @@
+<script>
+  //your existing facebook code:
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}
+  (window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  
+  // fb consent
+  var ccSettings = document.cookie.match(RegExp('cc-settings=.[^;]*'));
+  ccSettings = ccSettings ? JSON.parse(ccSettings[0].split('=')[1]) : {};
+  
+  fbq('consent', ccSettings.level && ccSettings.level.length && -1 !== ccSettings.level.indexOf('ad_storage') ? 'grant' : 'revoke'); 
+  
+  // rest of your existing facebook code:
+  fbq('init', 'Your Facebook Pixel ID');
+  fbq('track', 'PageView');
+</script>

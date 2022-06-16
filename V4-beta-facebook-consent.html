@@ -159,7 +159,7 @@ add_action( 'wp_body_open', function () { ?>
                                 },
                                 cookie_table: [             // list of all expected cookies
                                     {
-                                        col1: 'cc-cookie',
+                                        col1: 'cc_cookie',
                                         col2: 'Cookie Consent',
                                         col3: '182 dní',
                                         col4: 'Uchovávání vašich cookie preferencí',
@@ -176,6 +176,13 @@ add_action( 'wp_body_open', function () { ?>
                                 cookie_table: [             // list of all expected cookies
                                     {
                                         col1: '^_ga',       // match all cookies starting with "_ga"
+                                        col2: 'google.com',
+                                        col3: '2 roky',
+                                        col4: 'Soubor cookie _ga, instalovaný službou Google Analytics, vypočítává údaje o návštěvnících, relacích a kampaních a také sleduje používání webu pro analytickou zprávu webu. Soubor cookie ukládá informace anonymně a k rozpoznání jedinečných návštěvníků přiřazuje náhodně vygenerované číslo.',
+                                        is_regex: true
+                                    },
+				    {
+                                        col1: '_ga^',       // match all cookies starting with "_ga"
                                         col2: 'google.com',
                                         col3: '2 roky',
                                         col4: 'Soubor cookie _ga, instalovaný službou Google Analytics, vypočítává údaje o návštěvnících, relacích a kampaních a také sleduje používání webu pro analytickou zprávu webu. Soubor cookie ukládá informace anonymně a k rozpoznání jedinečných návštěvníků přiřazuje náhodně vygenerované číslo.',
